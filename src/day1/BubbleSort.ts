@@ -13,7 +13,6 @@ export default function bubble_sort(arr: number[]): void {
 export function bubble_sortMyFirstImplementation(arr: number[]): void {
 
 	//it works but it's not perfect
-	//the biggest difference is that 
 	for (let arrlen = arr.length; arrlen > 1; arrlen--) {
 		for (let j = 0; j < arrlen; j++) {
 			if (arr[j] > arr[j + 1]) {

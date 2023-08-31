@@ -1,18 +1,39 @@
+type Node<T> = {
+	value: T,
+	next?: Node<T>
+}
+
 export default class Queue<T> {
-    public length: number;
+	public length: number;
+	private head?: Node<T>;
+	private tail?: Node<T>;
 
-    
+	constructor() {
+		this.head = this.tail = undefined;
+		this.length = 0;
+	}
 
-    constructor() {
-    }
+	enqueue(item: T): void {
+		let node = {} as Node<T>;
+		node.value = item;
 
-    enqueue(item: T): void {
+		if (this.tail) {
+			this.tail.next = node;
+			this.tail = node;
+		} else {
+			this.tail = this.head = node;
+		}
+	}
 
-}
-    deque(): T | undefined {
+	deque(): T | undefined {
+		let aux = this.head;
 
-}
-    peek(): T | undefined {
+		this.head = this.head?.next;
 
-}
+		return aux?.value;
+	}
+
+	peek(): T | undefined {
+		return this.head ? this.head.value : undefined
+	}
 }
