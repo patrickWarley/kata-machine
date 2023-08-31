@@ -14,26 +14,42 @@ export default class Queue<T> {
 	}
 
 	enqueue(item: T): void {
-		let node = {} as Node<T>;
-		node.value = item;
-
-		if (this.tail) {
-			this.tail.next = node;
-			this.tail = node;
-		} else {
+		let node = { value: item } as Node<T>;
+		if (!this.tail) {
 			this.tail = this.head = node;
+			this.length++;
+			return;
 		}
+		this.tail.next = node;
+		this.tail = node;
+
+		this.length++;
 	}
 
 	deque(): T | undefined {
-		let aux = this.head;
+		//My solution :
+		//let aux = this.head;
+		//this.head = this.head?.next;
+		//return aux?.value;
 
-		this.head = this.head?.next;
+		// I didn't check if there was a head
+		//Guard clause: No head no nothing to deque
+		if (!this.head) return undefined;
 
-		return aux?.value;
+		//I forgot about updating the length
+		this.length--;
+
+		//I don't think that using const or let is relevant
+		const head = this.head;
+		this.head = this.head.next;
+
+		return head.value;
+
 	}
 
 	peek(): T | undefined {
-		return this.head ? this.head.value : undefined
+		// my solution : return this.head ? this.head.value : undefined
+		//I thought about doing that way, LOL
+		return this.head?.value;
 	}
 }
