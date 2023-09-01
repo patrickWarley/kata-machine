@@ -15,11 +15,13 @@ export default class Queue<T> {
 
 	enqueue(item: T): void {
 		let node = { value: item } as Node<T>;
+
 		if (!this.tail) {
 			this.tail = this.head = node;
 			this.length++;
 			return;
 		}
+
 		this.tail.next = node;
 		this.tail = node;
 
@@ -33,8 +35,13 @@ export default class Queue<T> {
 		//return aux?.value;
 
 		// I didn't check if there was a head
-		//Guard clause: No head no nothing to deque
-		if (!this.head) return undefined;
+		//Guard clause: No head, nothing to deque
+		//if I don't have a head I also don't have a tail
+		if (!this.head) {
+			this.tail = this.head;
+			return undefined;
+		}
+
 
 		//I forgot about updating the length
 		this.length--;
@@ -42,9 +49,7 @@ export default class Queue<T> {
 		//I don't think that using const or let is relevant
 		const head = this.head;
 		this.head = this.head.next;
-
 		return head.value;
-
 	}
 
 	peek(): T | undefined {
