@@ -39,6 +39,7 @@ export default class Queue<T> {
 		//if I don't have a head I also don't have a tail
 		if (!this.head) {
 			this.tail = this.head;
+			this.length = 0;
 			return undefined;
 		}
 
