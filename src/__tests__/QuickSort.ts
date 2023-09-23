@@ -1,9 +1,23 @@
 import quick_sort from "@code/QuickSort";
 
-test("quick-sort", function () {
-    const arr = [9, 3, 7, 4, 69, 420, 42];
+export default function generateRadomArr(size: number): number[] {
+	const arr = new Array<number>();
 
-    debugger;
-    quick_sort(arr);
-    expect(arr).toEqual([3, 4, 7, 9, 42, 69, 420]);
+	for (let i = 0; i < size; i++)
+		arr.push(Math.floor(Math.random() * 1000));
+
+	return arr;
+}
+
+test("quick-sort", function () {
+	const arr = generateRadomArr(10);
+	const sortedArr = (arr.slice()).sort((a, b) => a - b);
+
+	debugger;
+	quick_sort(arr);
+
+	console.log(arr);
+	console.log(sortedArr);
+
+	expect(arr).toEqual(sortedArr);
 });
