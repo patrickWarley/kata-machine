@@ -16,8 +16,5 @@ test("quick-sort", function () {
 	debugger;
 	quick_sort(arr);
 
-	console.log(arr);
-	console.log(sortedArr);
-
 	expect(arr).toEqual(sortedArr);
 });
