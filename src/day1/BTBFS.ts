@@ -9,6 +9,7 @@ export default function bfs(head: BinaryNode<number>, needle: number): boolean {
 		if(!curr){
 			//in a wile loop continue skips the current iteration and control flow of the program
 			//jumps back to the while condition
+			
 			continue;
 		}
 
