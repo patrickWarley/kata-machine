@@ -1,3 +1,4 @@
+// we may use a Heap to implement a priotity queue
 export default class MinHeap {
     public length: number;
     private data: number[];
