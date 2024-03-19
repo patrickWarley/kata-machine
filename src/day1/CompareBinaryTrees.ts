@@ -1,26 +1,30 @@
-export default function compare(a: BinaryNode<number> | null | undefined, b: BinaryNode<number> | null | undefined): boolean {
-	return compareDepth(a,b);// && compareBreadth(a,b);
+export default function compare(a: BinaryNode<number> | null , b: BinaryNode<number> | null ): boolean {
+	return compareDepth(a,b);
 }
 
-function compareDepth(a: BinaryNode<number> | null | undefined, b: BinaryNode<number> | null| undefined): boolean {
-
+function compareDepth(a: BinaryNode<number> | null ,b: BinaryNode<number> | null): boolean {
 	if(a === null && b === null)return true;
-	
-	if(a?.value !== b?.value) return false;
 
-	return compareDepth(a?.left, b?.left) && compareDepth(a?.right, b?.right);
+	if(a === null || b===null) return false;
+	
+	if(a.value !== b.value) return false;
+
+	return compareDepth(a.left, b.left) && compareDepth(a.right, b.right);
 }
 
-function compareBreadth(a: BinaryNode<number> | null | undefined, b: BinaryNode<number> | null| undefined): boolean {
+
+// I don't need it at all 
+// Just the Depth comparison is enough
+function compareBreadth(a: BinaryNode<number> | null , b: BinaryNode<number> | null ): boolean {
 
 
-	const q1:(BinaryNode<number> | undefined | null)[]= [a];
+	const q1:(BinaryNode<number> | null)[]= [a];
 
-	const q2:(BinaryNode<number> | undefined | null)[]= [b];
+	const q2:(BinaryNode<number> | null)[]= [b];
 
 	while(q1.length && q2.length){
-		const curr1 = q1.shift() as BinaryNode<number> | undefined | null;
-		const curr2 = q2.shift() as BinaryNode<number> | undefined | null;
+		const curr1 = q1.shift() as BinaryNode<number>| null;
+		const curr2 = q2.shift() as BinaryNode<number>| null;
 
 		//if the current is null or undefined just end it
 		if(!curr1 && !curr2){
