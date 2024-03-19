@@ -1,5 +1,5 @@
 export default function compare(a: BinaryNode<number> | null | undefined, b: BinaryNode<number> | null | undefined): boolean {
-	return compareDepth(a,b) && compareBreadth(a,b);
+	return compareDepth(a,b);// && compareBreadth(a,b);
 }
 
 function compareDepth(a: BinaryNode<number> | null | undefined, b: BinaryNode<number> | null| undefined): boolean {
